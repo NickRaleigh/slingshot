@@ -1,0 +1,8 @@
+{
+  "name": "test",
+  "targetSSHAddress": "papapumplocal",
+  "targetDir": "/home/nick/Development/playground/test/",
+  "localDir": "/home/nick/Development/tools/slinghsot/test/",
+  "isFile": "false",
+  "destroyOnExit": "true"
+}
