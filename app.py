@@ -1,14 +1,18 @@
 import time
 from slingshot import Slingshot
 from handler import EventHandler
+from RemoteListener import RemoteListener
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
+from multiprocessing import Process
 
 class App:
     @classmethod
     def __init__(self):
         global Slingshot
+        global RemoteListener
         Slingshot = Slingshot()
+        RemoteListener = RemoteListener()
         self.run()
 
     @classmethod

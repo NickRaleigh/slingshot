@@ -92,6 +92,7 @@ class Slingshot:
             self.runtime_settings['targetDir'] + ' ' +
             self.runtime_settings['localDir'] + ' ' +
             '--progress ' +
+            '--no-motd ' +
             deleteFlag
         )
         call(cmd.split())
@@ -109,6 +110,7 @@ class Slingshot:
             self.runtime_settings['targetSSHAddress'] + ':' +
             self.runtime_settings['targetDir'] + ' ' +
             '--progress ' +
+            '--no-motd ' +
             deleteFlag
         )
         call(cmd.split())
