@@ -1,8 +1,18 @@
-{
-  "name": "test",
-  "targetSSHAddress": "papapumplocal",
-  "targetDir": "/home/nick/Development/playground/test/",
-  "localDir": "/home/nick/Development/tools/slinghsot/test/",
-  "isFile": "false",
-  "destroyOnExit": "true"
-}
+[
+  {
+    "name": "bz", 
+    "destroyOnExit": "true", 
+    "targetDir": "/home/nick/Development/sites/rightcounsel-public-web/publicsites/static/imgs/bizcounsel/", 
+    "localDir": "/c/Users/hello/Development/tools/slinghsot/bz/", 
+    "targetSSHAddress": "papapumplocal", 
+    "isFile": "false"
+  }, 
+  {
+    "name": "testdir", 
+    "destroyOnExit": "true", 
+    "targetDir": "/home/nick/Development/playground/test/", 
+    "localDir": "/c/Users/hello/Development/tools/slinghsot/testdir/", 
+    "targetSSHAddress": "papapumplocal", 
+    "isFile": "false"
+  }
+]

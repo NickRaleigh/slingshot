@@ -1,5 +1,5 @@
 import time
-from new import Slingshot
+from slingshot import Slingshot
 from handler import EventHandler
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
@@ -15,7 +15,7 @@ class App:
     def run(self):
         event_handler = EventHandler()
         observer = Observer()
-        observer.schedule(event_handler, Slingshot.data['localDir'], recursive=True)
+        observer.schedule(event_handler, Slingshot.runtime_settings['localDir'], recursive=True)
         observer.start()
         try:
             while True:
@@ -26,6 +26,5 @@ class App:
         observer.join()
 
 # Runtime
-global App
 App = App()
 
