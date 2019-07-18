@@ -28,11 +28,11 @@ class Slingshot:
         if self.cli_args.action == "start":
             self.make_dir()
             self.pull_files()
-            print("Sync Complete.")
+            print("Pull Sync Complete.")
 
         elif self.cli_args.action == "pull":
             self.pull_files()
-            print("Sync Complete.")
+            print("Push Sync Complete.")
             exit()
 
         elif self.cli_args.action == "push":
@@ -87,11 +87,13 @@ class Slingshot:
         cmd = (
             'rsync ' +
             dirFlag +
+            '-av ' +
             user +
             self.runtime_settings['targetSSHAddress'] + ':' +
             self.runtime_settings['targetDir'] + ' ' +
             self.runtime_settings['localDir'] + ' ' +
-            '--progress ' +
+            '--rsh=ssh ' +
+            # '--progress ' +
             '--no-motd ' +
             deleteFlag
         )
@@ -105,11 +107,13 @@ class Slingshot:
         cmd = (
             'rsync ' +
             dirFlag +
+            '-av ' +
             user +
             self.runtime_settings['localDir'] + ' ' +
             self.runtime_settings['targetSSHAddress'] + ':' +
             self.runtime_settings['targetDir'] + ' ' +
-            '--progress ' +
+            '--rsh=ssh ' +
+            # '--progress ' +
             '--no-motd ' +
             deleteFlag
         )

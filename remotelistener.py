@@ -13,10 +13,18 @@ class RemoteListener:
 
     @classmethod
     def watch(self):
-        while self.state['running']:
-            self.updateState()
-            print self.state['md5sum']
-            time.sleep(1)
+        watcherIsRunning = self.state['running']
+        while watcherIsRunning:
+            if watcherIsRunning:
+                self.updateState()
+                watcherIsRunning = self.isRunning()
+                time.sleep(1)
+            else:
+                break
+
+    @classmethod
+    def isRunning(self):
+        return False if not self.state['running'] else True
 
     @classmethod
     def getmd5sum(self):
@@ -33,11 +41,13 @@ class RemoteListener:
             self.state['md5sum'] = new_state
 
     @classmethod
-    def stopRunnning(self):
+    def stopRunning(self):
         self.state['running'] = False
         print 'stop running'
+        self.watch()
 
     @classmethod
-    def startRunnning(self):
+    def startRunning(self):
         self.state['running'] = True
-        print 'start running'
+        print 'startrunning'
+        self.watch()
