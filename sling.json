@@ -14,5 +14,13 @@
     "localDir": "/c/Users/hello/Development/tools/slinghsot/testdir/", 
     "targetSSHAddress": "papapumplocal", 
     "isFile": "false"
+  }, 
+  {
+    "name": "http", 
+    "destroyOnExit": "true", 
+    "targetDir": "/home/nick/Development/playground/basichtml/", 
+    "localDir": "/c/Users/hello/Development/tools/slinghsot/basichtml/", 
+    "targetSSHAddress": "papapumplocal", 
+    "isFile": "false"
   }
 ]
