@@ -36,28 +36,33 @@ class HashHandler():
 
     @classmethod
     def watch_loop(self):
-        while True:
-            if not self.state['run_loop']:
-                break
-            else:
-                new_local_active_state = HashListener.check_local_active_state()
-                new_remote_active_state = HashListener.check_remote_active_state()
-                if ( new_local_active_state != self.state['local_active_state'] and
-                        new_remote_active_state == self.state['remote_active_state']
-                        ):
-                    print 'local file changed'
-                    Slingshot.push_files()
-                    self.update_state()
-                elif ( new_remote_active_state != self.state['remote_active_state'] and
-                        new_local_active_state == self.state['local_active_state']
-                        ):
-                    print 'remote file changed'
-                    Slingshot.pull_files()
-                    self.update_state()
-                time.sleep(1)
+        try:
+            while True:
+                if not self.state['run_loop']:
+                    break
+                else:
+                    new_local_active_state = HashListener.check_local_active_state()
+                    new_remote_active_state = HashListener.check_remote_active_state()
+                    if ( new_local_active_state != self.state['local_active_state'] and
+                            new_remote_active_state == self.state['remote_active_state']
+                            ):
+                        print 'local file changed'
+                        Slingshot.push_files()
+                        self.update_state()
+                    elif ( new_remote_active_state != self.state['remote_active_state'] and
+                          new_local_active_state == self.state['local_active_state']
+                          ):
+                        print 'remote file changed'
+                        Slingshot.pull_files()
+                        self.update_state()
+                        time.sleep(1)
+        except KeyboardInterrupt:
+            self.update_state(True)
+            Slingshot.stop()
+            exit()
 
     @classmethod
-    def update_state(self):
+    def update_state(self, quitting_app=False):
         self.state['run_loop'] = False
         self.state['local_active_state'] = HashListener.check_local_active_state()
         self.state['remote_active_state'] = HashListener.check_remote_active_state()
@@ -66,4 +71,5 @@ class HashHandler():
         Slingshot.runtime_settings['remoteHash'] = self.state['remote_save_state']
         Slingshot.write_runtime_settings_to_JSON()
         self.state['run_loop'] = True
-        self.watch_loop()
+        if not quitting_app:
+            self.watch_loop()

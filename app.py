@@ -11,7 +11,6 @@ class App:
         global RemoteListener
         global HashHandler
         Slingshot = Slingshot()
-        # RemoteListener = RemoteListener()
         HashHandler = HashHandler()
         self.run()
 
