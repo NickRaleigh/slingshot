@@ -53,7 +53,9 @@ class Slingshot:
             "remoteDir": "/path/on/server/",
             "localDir": "/path/to/local/",
             "isFile": "false",
-            "destroyOnExit": "true"
+            "destroyOnExit": "true",
+            "localHash": "0",
+            "remoteHash": "0"
         }
         self.sling_JSON_data.append(new_setting)
         with open('./sling.json', 'w') as f:
