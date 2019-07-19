@@ -61,6 +61,18 @@ class Slingshot:
         print("Added new setting for " + self.cli_args.name + '. You can sync it with your remote machine by running slingshot start ' + self.cli_args.name + '.')
 
     @classmethod
+    def write_runtime_settings_to_JSON(self):
+
+        updated_JSON_data = self.sling_JSON_data
+        for i in range(len(updated_JSON_data)): 
+            if updated_JSON_data[i]['name'] == self.cli_args.name: 
+                updated_JSON_data[i] = self.runtime_settings
+                break
+
+        with open('./sling.json', 'w') as f:
+            json.dump(updated_JSON_data, f, indent=2)
+
+    @classmethod
     def load_sling_JSON(self):
         with open('./sling.json') as f:
             self.sling_JSON_data = json.load(f)
@@ -76,7 +88,7 @@ class Slingshot:
         for k, v in dictionary.items():
             if k == key:
                 return True
-                break
+            break
         return False
 
     @classmethod
