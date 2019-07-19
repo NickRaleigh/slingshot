@@ -2,19 +2,29 @@
   {
     "name": "bz", 
     "destroyOnExit": "true", 
-    "targetDir": "/home/nick/Development/sites/rightcounsel-public-web/publicsites/static/imgs/bizcounsel/", 
+    "remoteDir": "/home/nick/Development/sites/rightcounsel-public-web/publicsites/static/imgs/bizcounsel/", 
     "localDir": "/c/Users/hello/Development/tools/slinghsot/bz/", 
-    "targetSSHAddress": "papapumplocal", 
+    "remoteSSHAddress": "papapumplocal", 
     "isFile": "false"
   }, 
   {
+    "localHash": "0", 
     "name": "testdir", 
     "destroyOnExit": "true", 
-    "targetDir": "/home/nick/Development/playground/test/", 
+    "remoteDir": "/home/nick/Development/playground/test/", 
     "localDir": "/c/Users/hello/Development/tools/slinghsot/testdir/", 
-    "targetSSHAddress": "papapumplocal", 
-    "isFile": "false",
-    "localHash": "0",
-    "targetHash": "0"
+    "remoteSSHAddress": "papapumplocal", 
+    "isFile": "false", 
+    "remoteHash": "0"
+  }, 
+  {
+    "name": "testremote", 
+    "destroyOnExit": "true", 
+    "remoteDir": "/home/nick/Development/playground/test/", 
+    "localDir": "/c/Users/hello/Development/tools/slinghsot/testdir/", 
+    "remoteSSHAddress": "papapump", 
+    "isFile": "false", 
+    "remoteHash": "0",
+    "localHash": "0"
   }
 ]

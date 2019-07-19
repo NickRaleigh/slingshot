@@ -48,9 +48,9 @@ class Slingshot:
     def add_new(self):
         new_setting = {
             "name": self.cli_args.name,
-            "targetSSHUser": "username",
-            "targetSSHAddress": "10.0.0.1",
-            "targetDir": "/path/on/server/",
+            "remoteSSHUser": "username",
+            "remoteSSHAddress": "10.0.0.1",
+            "remoteDir": "/path/on/server/",
             "localDir": "/path/to/local/",
             "isFile": "false",
             "destroyOnExit": "true"
@@ -83,14 +83,14 @@ class Slingshot:
     def pull_files(self):
         dirFlag = '-r ' if self.runtime_settings['isFile'] == 'false' else ''
         deleteFlag = '--delete ' if self.runtime_settings['isFile'] == 'false' else ''
-        user = self.runtime_settings['targetSSHUser'] + "@" if self.key_exists(self.runtime_settings, 'targetSSHUser') else ''
+        user = self.runtime_settings['remoteSSHUser'] + "@" if self.key_exists(self.runtime_settings, 'remoteSSHUser') else ''
         cmd = (
             'rsync ' +
             dirFlag +
             '-av ' +
             user +
-            self.runtime_settings['targetSSHAddress'] + ':' +
-            self.runtime_settings['targetDir'] + ' ' +
+            self.runtime_settings['remoteSSHAddress'] + ':' +
+            self.runtime_settings['remoteDir'] + ' ' +
             self.runtime_settings['localDir'] + ' ' +
             '--rsh=ssh ' +
             # '--progress ' +
@@ -102,7 +102,7 @@ class Slingshot:
     @classmethod
     def push_files(self):
         dirFlag = '-r ' if self.runtime_settings['isFile'] == 'false' else ''
-        user = self.runtime_settings['targetSSHUser'] + "@" if self.key_exists(self.runtime_settings, 'targetSSHUser') else ''
+        user = self.runtime_settings['remoteSSHUser'] + "@" if self.key_exists(self.runtime_settings, 'remoteSSHUser') else ''
         deleteFlag = '--delete ' if self.runtime_settings['isFile'] == 'false' else ''
         cmd = (
             'rsync ' +
@@ -110,8 +110,8 @@ class Slingshot:
             '-av ' +
             user +
             self.runtime_settings['localDir'] + ' ' +
-            self.runtime_settings['targetSSHAddress'] + ':' +
-            self.runtime_settings['targetDir'] + ' ' +
+            self.runtime_settings['remoteSSHAddress'] + ':' +
+            self.runtime_settings['remoteDir'] + ' ' +
             '--rsh=ssh ' +
             # '--progress ' +
             '--no-motd ' +

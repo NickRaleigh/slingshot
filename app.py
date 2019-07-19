@@ -2,17 +2,17 @@ import time
 from slingshot import Slingshot
 from RemoteListener import RemoteListener
 from multiprocessing import Process
-from localhash import LocalHash
+from hashhandler import HashHandler
 
 class App:
     @classmethod
     def __init__(self):
         global Slingshot
         global RemoteListener
+        global HashHandler
         Slingshot = Slingshot()
         # RemoteListener = RemoteListener()
-        LocalHash.checkActiveState()
-        LocalHash.checkSaveState()
+        HashHandler = HashHandler()
         self.run()
 
     @classmethod
